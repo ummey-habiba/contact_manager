@@ -4,12 +4,11 @@ const tblContactColName= 'name';
 const tblContactColMobile= 'mobile';
 const tblContactColEmail= 'email';
 const tblContactColGender= 'gender';
-const tblContactColGroup= 'group';
+const tblContactColGroup= 'contact_group';
 const tblContactColWebsite= 'website';
 const tblContactColAddress= 'address';
 const tblContactColDob= 'dob';
 const tblContactColImage= 'image';
-const tblContactColFavourite= 'favourite';
 
 class ContactModel{
   int ? id ;
@@ -22,20 +21,18 @@ class ContactModel{
   String ? image ;
   String ? website ;
   String ? dob;
-  bool favourite ;
 
-  ContactModel.name({
-    required this.name,
-    required this.email,
-    required this.address,
-    required this.mobile,
-    required this.group,
-    required this.gender,
-    this.image,
-    this.website,
-    this.dob,
-    this.favourite = false
-  });
+  ContactModel.name(
+      {required this.name,
+      required this.email,
+      required this.address,
+      required this.mobile,
+      required this.group,
+      required this.gender,
+      this.image,
+      this.website,
+      this.dob,
+      });
 
   Map<String, dynamic> toMap(){
     final map = <String,dynamic>{
@@ -48,9 +45,13 @@ class ContactModel{
       tblContactColDob: dob,
       tblContactColGroup : group,
       tblContactColGender :gender,
-      tblContactColFavourite : favourite
     };
 
     return map;
+  }
+
+  @override
+  String toString() {
+    return 'ContactModel{id: $id, name: $name, email: $email, address: $address, mobile: $mobile, group: $group, gender: $gender, image: $image, website: $website, dob: $dob}';
   }
 }

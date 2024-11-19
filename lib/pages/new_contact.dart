@@ -243,12 +243,20 @@ class _NewContactState extends State<NewContact> {
         address: _addressController.text,
         mobile: _mobileController.text,
         website: _webController.text,
-        group: _group!,
+        group: _group??'No group found',
         gender: gender.name,
         image: _imagePath,
         dob: getFormattedDate(_selectedDate)
 
       );
+      print(contact);
+    context.read<ContactProvider>().addContact(contact).then((value) {
+        showMsg(context, 'Saved');
+        Navigator.pop(context);
+      },).catchError((error){
+        
+        showMsg(context, error.toString());
+      });
 
 
     }
