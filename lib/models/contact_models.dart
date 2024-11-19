@@ -9,8 +9,9 @@ const tblContactColWebsite= 'website';
 const tblContactColAddress= 'address';
 const tblContactColDob= 'dob';
 const tblContactColImage= 'image';
+const tblContactColFavourite= 'favourite';
 
-class ContactModels{
+class ContactModel{
   int ? id ;
   String name ;
   String email;
@@ -21,8 +22,9 @@ class ContactModels{
   String ? image ;
   String ? website ;
   String ? dob;
+  bool favourite ;
 
-  ContactModels.name({
+  ContactModel.name({
     required this.name,
     required this.email,
     required this.address,
@@ -32,11 +34,11 @@ class ContactModels{
     this.image,
     this.website,
     this.dob,
+    this.favourite = false
   });
 
   Map<String, dynamic> toMap(){
     final map = <String,dynamic>{
-
       tblContactColName : name,
       tblContactColMobile : mobile,
       tblContactColEmail :email,
@@ -46,6 +48,7 @@ class ContactModels{
       tblContactColDob: dob,
       tblContactColGroup : group,
       tblContactColGender :gender,
+      tblContactColFavourite : favourite
     };
 
     return map;

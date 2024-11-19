@@ -236,25 +236,8 @@ class _NewContactState extends State<NewContact> {
 
   void _save() {
     if (_formKey.currentState!.validate()) {
-      final contact = ContactModels.name(
+      final contact = ContactModel.name(name: name, email: email, address: address, mobile: mobile, group: group, gender: gender)
 
-        name: _nameController.text,
-        email: _emailController.text,
-        address: _addressController.text,
-        mobile: _mobileController.text,
-        website: _webController.text,
-        group: _group!,
-        gender: gender.name,
-        image: _imagePath,
-        dob: getFormattedDate(_selectedDate)
-       
-      );
-     context.read<ContactProvider>().addContact(contact).then((value) {
-showMsg(context,'Saved');
-Navigator.pop(context);
-      },).catchError((error){
-        showMsg(context, error.toString());
-      });
 
     }
   }

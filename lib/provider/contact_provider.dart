@@ -3,10 +3,10 @@ import 'package:contact_manager/models/contact_models.dart';
 import 'package:flutter/foundation.dart';
 
 class ContactProvider with ChangeNotifier{
-List<ContactModels >_contactList= [];
-List<ContactModels> get contactList => _contactList;
+List<ContactModel >_contactList= [];
+List<ContactModel> get contactList => _contactList;
 final _db = DbHelper();
-Future<int> addContact(ContactModels contact) {
+Future<int> addContact(ContactModel contact) {
   return _db.insertContact(contact);
 }
 }

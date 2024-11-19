@@ -13,6 +13,7 @@ class DbHelper{
   $tblContactColDob text,
   $tblContactColImage text,
   $tblContactColAddress text,
+  $tblContactColFavourite integer,
   $tblContactColWebsite text)''';
   Future<Database> _open()async{
     final rootPath = await getDatabasesPath();
@@ -22,7 +23,7 @@ class DbHelper{
     },);
 
   }
-Future<int> insertContact(ContactModels contact) async{
+Future<int> insertContact(ContactModel contact) async{
     final db = await _open();
     return db.insert(tableContact,contact.toMap());
 }
